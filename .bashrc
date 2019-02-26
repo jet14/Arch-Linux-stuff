@@ -3,7 +3,8 @@
 #
 
 # If not running interactively, don't do anything
- [[ $- != *i* ]] && return
+ 
+[[ $- != *i* ]] && return
 
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
@@ -14,6 +15,10 @@ screenfetch
 
 alias pm='sudo pacman -Syu '
 alias ref='sudo reflector -c "GB" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirror$'
+bind '"\eOP":"clear\n"'
+bind '"\eOQ":"df -h; free\n"'
+bind '"\eOR":"\n"'
+bind '"\eOS":"\n"'
 bind '"\e[15~":"sudo sensors\n"'
 bind '"\e[17~":"sudo hddtemp /dev/sda1\n"'
 bind '"\e[18~":"sudo systemd-analyze\n"'
