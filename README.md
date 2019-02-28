@@ -4,5 +4,5 @@ I wanted to speed up common commands i use in terminal/console in linux, one way
 To check which keys correspond to which escape sequence use this web page to lookup code : http://aperiodic.net/phil/archives/Geekery/term-function-keys.html or just use google.
 They will work for all GNU/Linux terminals
 Tip: i have added myself as not requiring password so commands work instantly. F9 for screenfetch and F12 to run pacman -Syu.
-I have updated .bashrc with F1 - F9 used and F12, F10 & F11 are used by terminal menu.
-Adding a more comlex command using arguments caused error, resolved by placing commands in separate bash file and invoke that file containing commands ie. lp.sh & ex.sh updated bashrc to reflect.
+I have updated .bashrc with F1 - F9 used and F12. F10 & F11 are used by terminal menu.
+Adding a more complex command using arguments caused error, resolved by placing commands in separate bash file and invoke that file containing commands ie. lp.sh & ex.sh updated bashrc to reflect.
