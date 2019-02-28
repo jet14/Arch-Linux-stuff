@@ -5,3 +5,4 @@ To check which keys correspond to which escape sequence use this web page to loo
 They will work for all GNU/Linux terminals
 Tip: i have added myself as not requiring password so commands work instantly. F9 for screenfetch and F12 to run pacman -Syu.
 I have updated .bashrc with F1 - F9 used and F12, F10 & F11 are used by terminal menu.
+Adding a more comlex command using arguments caused error, resolved by placing commands in separate bash file and invoke that file containing commands. updated bashrc to reflect.
