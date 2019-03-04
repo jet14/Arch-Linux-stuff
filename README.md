@@ -6,5 +6,7 @@ They will work for all GNU/Linux terminals
 Tip: i have added myself as not requiring password so commands work instantly. F9 for screenfetch and F12 to run pacman -Syu.
 I have updated .bashrc with F1 - F9 used and F12. F10 & F11 are used by terminal menu.
 Adding a more complex command using arguments caused error, resolved by placing commands in separate bash file and invoke that file containing commands ie. lp.sh & ex.sh updated bashrc to reflect.
+
+
 New update added nested menu within function F3, F4 & F5 to allow upto 10 further commands to be run from each menu as an example,
 I have setup pacman file search & filter commands up in menu.sh and left menu2 and menu3 blank for anyone to add their own group of commands.
