@@ -10,8 +10,8 @@ show_menu(){
     echo -e "${MENU}**${NUMBER} 0)${MENU}  Neofetch ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 1)${MENU}  Archey ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU}  Lists packages which have an update available ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 3)${MENU}  ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 4)${MENU}  ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 3)${MENU}  Check details of package: ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 4)${MENU}  Check details of package: ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 5)${MENU}  ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 6)${MENU}  ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 7)${MENU}  ${NORMAL}"
@@ -19,7 +19,7 @@ show_menu(){
     echo -e "${MENU}**${NUMBER} 9)${MENU}  ${NORMAL}"
     echo -e "${MENU}*********************************************${NORMAL}"
     echo -e "${ENTER_LINE}Please enter a menu option or ${RED_TEXT}enter to exit. ${NORMAL}"
-    read -n1 opt 
+    read -sn1 opt 
     
 }
 function option_picked() {
@@ -58,16 +58,19 @@ while [ opt != '' ]
 
         3) clear;
             option_picked "Option 3 Picked";
-            clear;
+            read -p "Enter package name: " string
+            [[ -z "$string" ]] && continue
+            sudo pacman -Qi $string | less; 
             show_menu;
             ;;
 
         4) clear;
             option_picked "Option 4 Picked";
-            clear;
+            read -p "Enter package name: " pname
+	    [[ -z "$pname" ]] && continue	
+  	    sudo pacman -Qi $pname | less;
             show_menu;
             ;;
-
 
 	5) clear;
 	    option_picked "Option 5 Picked";

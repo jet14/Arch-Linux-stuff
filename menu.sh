@@ -20,7 +20,7 @@ show_menu(){
     echo -e "${MENU}**${NUMBER} 9)${MENU} Show the tree of local installed packages ${NORMAL}"
     echo -e "${MENU}*********************************************${NORMAL}"
     echo -e "${ENTER_LINE}Please enter a menu option or ${RED_TEXT}enter to exit. ${NORMAL}"
-    read -n1 opt 
+    read  -sn1 opt 
     
 }
 function option_picked() {
@@ -54,7 +54,7 @@ while [ opt != '' ]
 
         2) clear;
             option_picked "Option 2 Picked"
-            pacman -Quq|xargs expac -S -H M '%k\t%n' ;  pacman -Qu | column -t
+            pacman -Quq|xargs expac -S -H M '%k\t%n' ; echo -e ; pacman -Qu | column -t
             show_menu
             ;;
 
