@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Sample script written for Part 4 of the RHCE series
 # This script will return the following set of system information:
 # -Hostname information:
 echo -e "\e[31;43m***** HOSTNAME INFORMATION *****\e[0m"
