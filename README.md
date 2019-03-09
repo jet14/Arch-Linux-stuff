@@ -10,3 +10,4 @@ New update added nested menu within function F3, F4 & F5 to allow upto 10 furthe
 I have setup pacman file search & filter commands up in menu.sh and left menu2 and menu3 blank for anyone to add their own group of commands.
 Updated menu.sh completed, menu 2 ammended. In update mirrorlist amend command for your own country, currently set for GB (UK).
 Hopefully this will come in handy for someone. For menu3 i propose adding systemd commands or maintenance commands for arch. 
+9/3/2019 Updated all 3 menus, tested and final update for now.
