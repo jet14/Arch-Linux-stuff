@@ -11,12 +11,12 @@ show_menu(){
     echo -e "${MENU}**${NUMBER} 1)${MENU}  Archey ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 2)${MENU}  Lists packages which have an update available ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 3)${MENU}  Check details of package: ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 4)${MENU}  Check details of package: ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 5)${MENU}  ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 6)${MENU}  ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 7)${MENU}  ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 8)${MENU}  ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 9)${MENU}  ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 4)${MENU}  Find files on drive, type name: ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 5)${MENU}  Find all hidden files: ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 6)${MENU}  Find all empty files: ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 7)${MENU}  Find files which are over 50MB ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 8)${MENU}  Remove packages from pacman cache keeping last 3 ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 9)${MENU}  Find broken symlinks ${NORMAL}"
     echo -e "${MENU}*********************************************${NORMAL}"
     echo -e "${ENTER_LINE}Please enter a menu option or ${RED_TEXT}enter to exit. ${NORMAL}"
     read -sn1 opt 
@@ -68,37 +68,37 @@ while [ opt != '' ]
             option_picked "Option 4 Picked";
             read -p "Enter package name: " pname
 	    [[ -z "$pname" ]] && continue	
-  	    sudo pacman -Qi $pname | less;
+  	    sudo find / -xdev -name $pname ;
             show_menu;
             ;;
 
 	5) clear;
 	    option_picked "Option 5 Picked";
-	    clear;
+	    find / -type f -name ".*" | less;
 	    show_menu;
 	    ;;
 	
 	6) clear;
             option_picked "Option 6 Picked";
-            clear;
+	    find / -type f -empty | less;
             show_menu;
             ;;
 
         7) clear;
             option_picked "Option 7 Picked";
-            clear;
+            find / -xdev -type f -size +50M -exec du -sh {} ';' | sort -r ;
             show_menu;
             ;;
 
 	8) clear;
             option_picked "Option 8 Picked";
-            clear;
+            paccache -rk3 ;
             show_menu;
             ;;
 
         9) clear;
             option_picked "Option 9 Picked";
-            clear;
+            find -xtype l -print ;
             show_menu;
             ;;
 

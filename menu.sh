@@ -32,10 +32,10 @@ function option_picked() {
 
 clear
 show_menu
-while [ opt != '' ]
-    do
-    if [[ $opt = "" ]]; then 
-            exit;
+ while [ opt != '' ]
+ do
+  if [[ $opt = "" ]]; then 
+          exit;
     else
         case $opt in
         0) clear;
@@ -94,18 +94,18 @@ while [ opt != '' ]
             sudo pacman -Rns $(pacman -Qtdq);
             show_menu;
             ;;
+
         9) clear;
             option_picked "Option 9 Picked";
             pacman -Qi | less;
             show_menu;
             ;;
 
-
         x)exit;
         ;;
 
-        \n)exit;
-        ;;
+      #  \n)exit;
+      #  ;;
 
         *)clear;
         option_picked "Pick an option from the menu";
