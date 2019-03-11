@@ -9,7 +9,7 @@ show_menu(){
     echo -e "${MENU}*********************************************${NORMAL}"
     echo -e "${MENU}**${NUMBER} 0)${MENU}  Neofetch ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 1)${MENU}  Archey ${NORMAL}"
-    echo -e "${MENU}**${NUMBER} 2)${MENU}  Lists packages which have an update available ${NORMAL}"
+    echo -e "${MENU}**${NUMBER} 2)${MENU}  List packages which have an update available ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 3)${MENU}  Check details of package: ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 4)${MENU}  Find files on drive, type name: ${NORMAL}"
     echo -e "${MENU}**${NUMBER} 5)${MENU}  Find all hidden files: ${NORMAL}"
@@ -34,84 +34,84 @@ show_menu
 while [ opt != '' ]
     do
     if [[ $opt = "" ]]; then 
-            exit;
+            exit
     else
         case $opt in
-        0) clear;
-           option_picked "Option 0 Picked";
-           neofetch; 
-           show_menu;
+        0) clear
+           option_picked "Option 0 Picked"
+           neofetch
+           show_menu
            ;;
 
    
-        1) clear;
-           option_picked "Option 1 Picked";
-           archey3; 
-           show_menu;
+        1) clear
+           option_picked "Option 1 Picked"
+           archey3
+           show_menu
            ;;
 
-        2) clear;
-            option_picked "Option 2 Picked";
-            sudo pacman -Qu;
-            show_menu;
+        2) clear
+            option_picked "Option 2 Picked"
+            sudo pacman -Qu
+            show_menu
             ;;
 
-        3) clear;
-            option_picked "Option 3 Picked";
+        3) clear
+            option_picked "Option 3 Picked"
             read -p "Enter package name: " string
             [[ -z "$string" ]] && continue
-            sudo pacman -Qi $string | less; 
-            show_menu;
+            sudo pacman -Qi $string | less 
+            show_menu
             ;;
 
-        4) clear;
-            option_picked "Option 4 Picked";
+        4) clear
+            option_picked "Option 4 Picked"
             read -p "Enter package name: " pname
 	    [[ -z "$pname" ]] && continue	
-  	    sudo find / -xdev -name $pname ;
-            show_menu;
+  	    sudo find / -xdev -name $pname 
+            show_menu
             ;;
 
-	5) clear;
-	    option_picked "Option 5 Picked";
-	    find / -type f -name ".*" | less;
-	    show_menu;
+	5) clear
+	    option_picked "Option 5 Picked"
+	    find / -type f -name ".*" | less
+	    show_menu
 	    ;;
 	
-	6) clear;
-            option_picked "Option 6 Picked";
-	    find / -type f -empty | less;
-            show_menu;
+	6) clear
+            option_picked "Option 6 Picked"
+	    find / -type f -empty | less
+            show_menu
             ;;
 
-        7) clear;
-            option_picked "Option 7 Picked";
-            find / -xdev -type f -size +50M -exec du -sh {} ';' | sort -r ;
-            show_menu;
+        7) clear
+            option_picked "Option 7 Picked"
+            find / -xdev -type f -size +50M -exec du -sh {} ';' | sort -r 
+            show_menu
             ;;
 
-	8) clear;
-            option_picked "Option 8 Picked";
-            paccache -rk3 ;
-            show_menu;
+	8) clear
+            option_picked "Option 8 Picked"
+            paccache -rk3 
+            show_menu
             ;;
 
-        9) clear;
-            option_picked "Option 9 Picked";
-            find -xtype l -print ;
-            show_menu;
+        9) clear
+            option_picked "Option 9 Picked"
+            find -xtype l -print 
+            show_menu
             ;;
 
 
-        x)exit;
+        x)exit
         ;;
 
-        \n)exit;
+        \n)exit
         ;;
 
-        *)clear;
-        option_picked "Pick an option from the menu";
-        show_menu;
+        *)clear
+        option_picked "Pick an option from the menu"
+        show_menu
         ;;
     esac
 fi
