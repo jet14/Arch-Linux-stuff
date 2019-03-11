@@ -103,13 +103,13 @@ while [ opt != '' ]
             ;;
 
 
-        x)exit
+        x) exit
         ;;
 
-        \n)exit
+        \n) exit
         ;;
 
-        *)clear
+        *) clear
         option_picked "Pick an option from the menu"
         show_menu
         ;;
