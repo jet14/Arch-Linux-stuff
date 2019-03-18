@@ -104,12 +104,12 @@ while [[ $opt != 'X' ]]; do
            ;;
 
 	8) option_picked "Option 8 Picked"
-           tput cup 19 0; paccache -rk3 ; tput ed
+           tput cup 19 0; paccache -rk3 
            show_menu
            ;;
 
         9) option_picked "Option 9 Picked"
-           tput cup 19 0; find -xtype l -print; #tput ed
+           tput cup 19 0; find -xtype l -print
            show_menu
            ;;
 
@@ -121,9 +121,7 @@ while [[ $opt != 'X' ]]; do
            show_menu
            ;;
  
-   esac
-tput cnorm
-tput sgr0
-clear
+esac
+tput cnorm; tput sgr0; clear
 done
 
