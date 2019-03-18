@@ -1,0 +1,128 @@
+#!/bin/bash
+clear
+show_menu(){
+   
+    MENU=`echo "\033[36m"` #Blue
+    NUMBER=`echo "\033[33m"` #yellow
+    RED_TEXT=`echo "\033[31m"`
+ 
+    tput civis; tput cup 4 50
+    
+    echo -e "${MENU}*********************************************"
+       tput cup 5  50
+    echo -e "**${NUMBER} 0)${MENU} Neofetch"
+       tput cup  6 50
+    echo -e "**${NUMBER} 1)${MENU} Archey"
+       tput cup 7 50  
+    echo -e "**${NUMBER} 2)${MENU} List packages which have an update available"
+       tput cup 8 50
+    echo -e "**${NUMBER} 3)${MENU} Check details of package:"
+       tput cup 9 50	
+    echo -e "**${NUMBER} 4)${MENU} Find files on drive, type name:"
+       tput cup 10 50
+    echo -e "**${NUMBER} 5)${MENU} Find all hidden files:"
+       tput cup 11 50
+    echo -e "**${NUMBER} 6)${MENU} Find all empty files:"
+       tput cup 12 50
+    echo -e "**${NUMBER} 7)${MENU} Find files which are over 50MB"
+       tput cup 13 50    
+    echo -e "**${NUMBER} 8)${MENU} Remove packages from pacman cache keeping last 3"
+       tput cup 14 50
+    echo -e "**${NUMBER} 9)${MENU} Find broken symlinks"
+       tput cup 15 50
+    echo -e "**********************************************"
+       tput cup 18 50 
+   echo -e "${NUMBER}Please enter a menu option or ${RED_TEXT}X to exit."
+   read -sn1 opt 
+    
+}
+function option_picked() {
+    tput cup 1 50
+    COLOR='\033[01;31m' # bold red
+    RESET='\033[00;00m' # normal white
+    MESSAGE=${@:-"${RESET}Error: No message passed"}
+    echo -e "${COLOR}${MESSAGE}${RESET}"
+}
+while [[ $opt != 'X' ]]; do
+   case $opt in
+ 
+       0)  option_picked "Option 0 Picked"
+	   neofetch; 
+	   read -sn1 -p  "Press any key to continue..."; clear
+	   show_menu
+           ;;
+   
+        1) option_picked "Option 1 Picked"
+	   archey3  
+           read -n1 -t10 any_key ; clear	   
+	   #read -n1 -p "Press any key to continue..."; clear
+           show_menu
+           ;;
+
+        2) option_picked "Option 2 Picked"
+	   tput cup 19 0
+           sudo pacman -Qu
+           show_menu
+           ;;
+
+        3) option_picked "Option 3 Picked"
+	   tput cup 19 0 
+	   read -p "Enter package name: " string
+           [[ -z "$string" ]] && continue
+           sudo pacman -Qi $string | less
+           clear
+	   show_menu
+           ;;
+
+        4) option_picked "Option 4 Picked"
+           tput cup 19 0
+	   read -p "Enter package name: " pname
+           [[ -z "$pname" ]] && continue
+           sudo find / -xdev -name $pname | less
+	   clear
+           show_menu
+           ;;
+
+	5) option_picked "Option 5 Picked"
+	   tput cup 19 0; find / -type f -name ".*" | less; 
+	   show_menu
+	   ;;
+	
+	6) option_picked "Option 6 Picked"
+	   tput cup 19 0	
+	   find / -type f -empty | less
+           tput ed
+	   show_menu
+           ;;
+
+        7) option_picked "Option 7 Picked"
+	   tput cup 19 0
+           find / -xdev -type f -size +50M -exec du -sh {} ';' | sort -r | less
+           tput ed
+	   show_menu
+           ;;
+
+	8) option_picked "Option 8 Picked"
+           tput cup 19 0; paccache -rk3 ; tput ed
+           show_menu
+           ;;
+
+        9) option_picked "Option 9 Picked"
+           tput cup 19 0; find -xtype l -print; #tput ed
+           show_menu
+           ;;
+
+        x) exit
+           ;;
+
+        *) tput blink		
+           option_picked "Pick an option from the menu"
+           show_menu
+           ;;
+ 
+   esac
+tput cnorm
+tput sgr0
+clear
+done
+

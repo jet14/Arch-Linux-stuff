@@ -1,0 +1,115 @@
+#!/bin/bash
+clear
+show_menu(){
+    NORMAL=`echo "\033[m"`
+    MENU=`echo "\033[36m"` #Blue
+    NUMBER=`echo "\033[33m"` #yellow
+    FGRED=`echo "\033[41m"`
+    RED_TEXT=`echo "\033[31m"`
+    ENTER_LINE=`echo "\033[33m"`
+    tput civis; tput cup 4 50
+    echo -e "${MENU}*********************************************"
+       tput cup 5  50
+    echo -e "**${NUMBER} 0)${MENU} Failed systemd services:"
+       tput cup  6 50
+    echo -e "**${NUMBER} 1)${MENU} High priority errors in the systemd journal:"
+       tput cup 7 50  
+    echo -e "**${NUMBER} 2)${MENU} List installed unit files:"
+       tput cup 8 50
+    echo -e "**${NUMBER} 3)${MENU} Show system status:"
+       tput cup 9 50	
+    echo -e "**${NUMBER} 4)${MENU} List running units:"
+       tput cup 10 50
+    echo -e "**${NUMBER} 5)${MENU} Get current targets:"
+       tput cup 11 50
+    echo -e "**${NUMBER} 6)${MENU} Remove archived journal files until the disk space they use falls below 100M:"
+       tput cup 12 50
+    echo -e "**${NUMBER} 7)${MENU} Show all messages from this boot:"
+       tput cup 13 50    
+    echo -e "**${NUMBER} 8)${MENU} Force FSCK check on next boot:"
+       tput cup 14 50
+    echo -e "**${NUMBER} 9)${MENU}"
+       tput cup 15 50
+    echo -e "**********************************************"
+       tput cup 18 50 
+   echo -e "${ENTER_LINE}Please enter a menu option or ${RED_TEXT}X to exit. ${NORMAL}"
+   read -sn1 opt 
+    
+}
+function option_picked() {
+    tput cup 1 50
+    COLOR='\033[01;31m' # bold red
+    RESET='\033[00;00m' # normal white
+    MESSAGE=${@:-"${RESET}Error: No message passed"}
+    echo -e "${COLOR}${MESSAGE}${RESET}"
+}
+while [[ $opt != 'X' ]]; do
+   case $opt in
+ 
+       0)  option_picked "Option 0 Picked"
+	   tput cup 19 0
+	   systemctl --failed; tput ed 
+           show_menu
+           ;;
+   
+        1) option_picked "Option 1 Picked"
+	   journalctl -p 3 -xb | less; 
+           show_menu
+           ;;
+
+        2) option_picked "Option 2 Picked"
+	   systemctl list-unit-files ; clear 
+           show_menu
+           ;;
+
+        3) option_picked "Option 3 Picked"
+	   systemctl status ; clear 
+           show_menu
+           ;;
+
+        4) option_picked "Option 4 Picked"
+           systemctl ; clear
+	   show_menu
+           ;;
+
+	5) option_picked "Option 5 Picked"
+	   systemctl list-units --type=target | less
+	   show_menu
+	   ;;
+	
+	6) option_picked "Option 6 Picked"
+	   tput cup 19 0
+	   journalctl --vacuum-size=100M
+           show_menu
+           ;;
+
+        7) option_picked "Option 7 Picked"
+	   journalctl -b | less
+           show_menu
+           ;;
+
+	8) option_picked "Option 8 Picked"
+           sudo touch /forcefsck
+           tput cup 19 0  
+           echo "Fsck enabled for next boot"
+	   show_menu
+           ;;
+
+        9) option_picked "Option 9 Picked"
+           tput cup 19 0; lsblk
+           show_menu
+           ;;
+
+        x) exit
+           ;;
+
+        *) tput blink		
+           option_picked "Pick an option from the menu"
+           show_menu
+           ;;
+ 
+   esac
+tput cnorm
+clear
+done
+
