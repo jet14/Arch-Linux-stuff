@@ -31,9 +31,9 @@ show_menu(){
     echo  "**$NUMBER 9)$MENU Show the tree of local installed packages"
        tput cup 16 50
     echo  "***********************************************"
-       tput cup 18 50 
-   echo  "$NUMBER Please enter a menu option or $(tput setaf 1)X to exit."
-   read -sn1 opt 
+       tput cup 18 49 
+    echo  "$NUMBER Please enter a menu option or $(tput setaf 1)X to exit."
+    read -sn1 opt 
 }
 function option_picked(){
     tput cup 1 50	
