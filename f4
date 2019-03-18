@@ -54,6 +54,7 @@ while [[ $opt != 'X' ]]; do
    
         1) option_picked "Option 1 Picked"
 	   archey3  
+	   echo "Press any key to continue... or will return to Menu in 10 seconds."
            read -n1 -t10 any_key ; clear	   
 	   #read -n1 -p "Press any key to continue..."; clear
            show_menu
