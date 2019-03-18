@@ -16,7 +16,7 @@ Hopefully this will come in handy for someone. For menu3 i propose adding system
 close program by upper or lowercase  x or X
 Will only accept keys 0 - 9 in menu, so no wrong key presses
 Clear screen beginning and end and restores.
-Imporved menu layout and outputs from commands so the page to less etc.
+Improved menu layout and outputs from commands so the page to less etc.
 Renamed to f3, f4 & f5 contain sub-menus, amend them to your own commands
 Tip: I have placed files in $home directory and have sudo access so all commands work without password to make it seemless only key presses required no pressing enter, on some screens simply press any key & screen will refresh menu if it gets garbled.
 
