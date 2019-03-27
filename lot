@@ -13,7 +13,7 @@ echo "$no 3)$mt	Set for Life"
 tput cup 8 50
 echo "$no 4)$mt	Lotto Hotpicks"
 tput cup 9 50
-echo "$no 5)$mt	Euro Hotpicks"
+echo "$no 5)$mt	Euro Millions Hotpicks"
 tput cup 10 50
 echo "$no 6)$mt	Thunderball"
 tput cup 11 50
