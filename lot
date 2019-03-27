@@ -1,0 +1,147 @@
+#!/bin/bash
+clear
+no=$(tput setaf 3)
+mt=$(tput setaf 6)
+
+menu() {
+tput civis; tput cup 5 50
+echo "$no 1)$mt   Euro lotto"
+tput cup 6 50
+echo "$no 2)$mt	Lotto"
+tput cup 7 50
+echo "$no 3)$mt	Set for Life"
+tput cup 8 50
+echo "$no 4)$mt	Lotto Hotpicks"
+tput cup 9 50
+echo "$no 5)$mt	Euro Hotpicks"
+tput cup 10 50
+echo "$no 6)$mt	Thunderball"
+tput cup 11 50
+echo "$no 7)$mt   10 Set for Life No's"
+tput cup 12 50
+echo "$no 8)$mt   10 Eurolot No's"
+tput cup 13 50
+echo "$no 9)$mt   10 Lotto No's"
+tput cup 15 50
+echo "$no x)$mt   x to eXit"
+tput cup 17 50
+echo "$no      Enter choice 1 - 9" 
+read -rsn1 opt
+clear; tput sgr0
+}
+
+function option() {
+    tput cup 0 51
+    echo  "$(tput setaf 3)${*:-}$(tput setaf 7)"
+}
+
+while [[ $opt != "X" ]]; do
+
+case $opt in
+	
+	1)	option "Option 1 picked"
+		tput setaf 1;tput setab 7; tput cup 2 51; tput bold;
+		seq 1 50 | shuf | head -5 | sort -n | xargs printf "%d %d %d %d %d  "
+		seq 1 12 | shuf | head -2 | sort -n | xargs printf "  %d  %d" 
+		tput sgr0
+		menu
+		;;
+
+	2)	option "Option 2 picked"	
+		tput setaf 1; tput cup 2 51; tput bold
+		seq 1 59 | shuf | head -6 | sort -n | xargs printf "%d %d %d %d %d %d" 
+		tput sgr0
+		menu		
+		;;
+
+	3)	option "Option 3 picked"	
+		tput setaf 1; tput cup 2 51; tput bold
+		seq 1 47 | shuf | head -5 | sort -n | xargs printf "%d %d %d %d %d  "
+		seq 1 10 | shuf | head -1 | sort -n | xargs printf " %d\n"
+		tput sgr0
+		menu		
+ 		;;
+
+	4)	option "Option 4 picked"	
+		tput setaf 1; tput cup 2 51; 
+		echo "Input pick 1 - 5     " ;  tput cup 2 51 
+		read -rsn1 pick
+		if [[ $pick =~ -+?[6-9] || $pick =~ [a-z] || $pick =~ [A-Z] || $pick = "" || $pick = "0" ]]; then
+  		echo "Invalid input:   "
+  		elif [[ $pick -ge 1 && $pick -le 5 ]]; then
+		tput bold
+		seq 1 59 | shuf | head -$pick | sort -n | xargs printf "%d %d %d %d %d      " 
+		tput sgr0
+		fi
+		menu
+		;;	 
+		
+	5)	option "Option 5 picked"	
+		tput setaf 1; tput cup 2 51
+		echo "Input pick 1 - 5     " ;  tput cup 2 51
+                read -rsn1 pick
+                [[ $pick != [1-5] ]]; 
+                if [[ $pick -ge 1 && $pick -le 5 ]]; then
+		tput bold
+		seq 1 50 | shuf | head -$pick | sort -n | xargs printf "%d %d %d %d %d      "
+		tput sgr0
+		menu
+		fi
+		;;
+
+
+	6)	option "Option 6 picked"	
+		tput setaf 1; tput cup 2 51; tput bold
+		seq 1 39 | shuf | head -5 | sort -n | xargs printf "%d %d %d %d %d  "
+		seq 1 14 | shuf | head -1 | sort -n | xargs printf " %d\n" 
+	        tput sgr0
+		menu		
+		;;
+
+	7)	option "Option 7 picked: 10 Set for Life No's"
+		tput setaf 1; tput bold
+		for i in {1..10}; do		
+		seq 1 47 | shuf | head -5 | sort -n | xargs printf '|%2d %2d %2d %2d %2d|   ' 
+		seq 1 10 | shuf | head -1 | sort -n | xargs printf '|%2d|\n\n'  
+		done
+		tput sgr0
+                read -sn1 -p  "Press any key to continue..." ; clear
+		menu
+		;;
+
+	8)      option "Option 8 picked: 10 Eurolot No's"
+                tput setaf 1; tput bold
+                for i in {1..10}; do    
+                seq 1 50 | shuf | head -5 | sort -n | xargs printf '|%2d %2d %2d %2d %2d|   '
+                seq 1 12 | shuf | head -2 | sort -n | xargs printf '|%2d| |%2d|\n\n'
+                done
+                tput sgr0
+                read -sn1 -p  "Press any key to continue..." ; clear
+                menu
+                ;;
+
+	9)      option "Option 9 picked: 10 Lotto No's"
+                tput setaf 1; tput bold
+                for i in {1..10}; do    
+                seq 1 59 | shuf | head -6 | sort -n | xargs printf '|%2d %2d %2d %2d %2d %2d|\n\n'
+                done
+                tput sgr0
+                read -sn1 -p  "Press any key to continue..." ; clear
+                menu
+                ;;
+
+
+
+	x)	#option "Exit  picked"	
+		tput sgr0; tput cnorm; exit
+		;;
+			
+	*)	tput blink
+		tput cup 0 51;tput setaf 3; echo "Try again"
+		tput sgr0
+		menu		
+		;;
+
+esac
+done
+
