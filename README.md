@@ -21,3 +21,5 @@ Renamed to f3, f4 & f5 contain sub-menus, amend them to your own commands
 Tip: I have placed files in $home directory and have sudo access so all commands work without password to make it seemless only key presses required no pressing enter, on some screens simply press any key & screen will refresh menu if it gets garbled.
 
 Hope it comes in handy for someone !!!
+
+27/3/19 : A new program i've written Lottery no generator for UK lottery with all games and extra's; program name simply lot
