@@ -5,7 +5,7 @@ mt=$(tput setaf 6)
 
 menu() {
 tput civis; tput cup 5 50
-echo "$no 1)$mt   Euro lotto"
+echo "$no 1)$mt   Euro Millions"
 tput cup 6 50
 echo "$no 2)$mt	Lotto"
 tput cup 7 50
@@ -19,7 +19,7 @@ echo "$no 6)$mt	Thunderball"
 tput cup 11 50
 echo "$no 7)$mt   10 Set for Life No's"
 tput cup 12 50
-echo "$no 8)$mt   10 Eurolot No's"
+echo "$no 8)$mt   10 Euro Millions No's"
 tput cup 13 50
 echo "$no 9)$mt   10 Lotto No's"
 tput cup 15 50
