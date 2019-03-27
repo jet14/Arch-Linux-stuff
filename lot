@@ -109,7 +109,7 @@ case $opt in
 		menu
 		;;
 
-	8)      option "Option 8 picked: 10 Eurolot No's"
+	8)      option "Option 8 picked: 10 Euro Millions No's"
                 tput setaf 1; tput bold
                 for i in {1..10}; do    
                 seq 1 50 | shuf | head -5 | sort -n | xargs printf '|%2d %2d %2d %2d %2d|   '
