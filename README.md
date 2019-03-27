@@ -23,3 +23,4 @@ Tip: I have placed files in $home directory and have sudo access so all commands
 Hope it comes in handy for someone !!!
 
 27/3/19 : A new program i've written Lottery no generator for UK lottery with all games and extra's; program name simply lot
+p.s. Dont forget to tip me if you win! :-)
