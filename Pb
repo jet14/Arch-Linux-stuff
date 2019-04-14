@@ -7,8 +7,6 @@ echo  "Press $(tput setaf 2)S $(tput setaf 7)or $(tput setaf 4)R $(tput setaf 7)
 read -rsn1 opt
 }
 
-option() { tput cup 3 52; echo $@; }
-
 while [[ $opt != "X" ]]; do
 
 case $opt in
@@ -28,7 +26,7 @@ case $opt in
           x) tput sgr0; clear; exit
 	     ;;
 
-	  *) option "Pick an option from menu"
+	  *) tput cup 3 52; echo "Pick an option from menu"
 	     tput sgr0
 	     menu
 	     ;;
