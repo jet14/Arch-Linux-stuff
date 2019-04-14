@@ -1,0 +1,39 @@
+#!/bin/bash
+clear
+
+menu() { 
+tput cup 1 53; tput civis; tput rev; tput bold
+echo  "Press $(tput setaf 2)S $(tput setaf 7)or $(tput setaf 4)R $(tput setaf 7)or $(tput setaf 1)P $(tput setaf 7)or $(tput setaf 6)X"
+read -rsn1 opt
+}
+
+option() { 
+tput cup 3 52; echo $@; }
+
+while [[ $opt != "X" ]]; do
+
+case $opt in
+
+	r|R) sudo systemctl reboot
+	     menu
+	     ;;
+
+    o|O|p|P) sudo systemctl poweroff
+             menu
+	     ;;
+
+       s|S)  sudo systemctl suspend
+	     exit
+	     ;;
+
+          x) tput sgr0; clear; exit
+	     ;;
+
+	  *) option "Pick an option from menu"
+	     tput sgr0
+	     menu
+	     ;;
+
+esac
+tput sgr0; clear; tput cnorm
+done
